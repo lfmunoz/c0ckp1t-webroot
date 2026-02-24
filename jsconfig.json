@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "GlobalStore": ["./core/GlobalStore.mjs"],
+      "Logging": ["./core/Logging.mjs"],
+      "JsUtils": ["./core/JsUtils.mjs"],
+      "Constants": ["./Constants.mjs"],
+      "NotifyUtils": ["./core/notify/NotifyUtils.mjs"],
+      "WsUtils": ["./core/WsUtils.mjs"],
+      "vue": ["./js_ext/vue.js"],
+      "vue-router": ["./js_ext/vue-router.esm-browser.prod.js"],
+      "vue3-sfc-loader": ["./js_ext/vue3-sfc-loader.esm.js"]
+    }
+  },
+  "include": ["**/*.js", "**/*.mjs", "**/*.vue"],
+  "exclude": ["node_modules"]
+}

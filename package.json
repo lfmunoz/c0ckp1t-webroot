@@ -1,0 +1,11 @@
+{
+  "name": "c0ckp1t",
+  "version": "1.0.0",
+  "type": "module",
+  "files": [
+    "core/",
+    "components/",
+    "js_ext/",
+    "css/"
+  ]
+}
