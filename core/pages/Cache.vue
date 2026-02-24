@@ -7,14 +7,13 @@
 // IMPORTS
 //________________________________________________________________________________
 import {reactive, markRaw, onMounted, computed} from 'vue'
-import Constants from "Constants";
 import { store as storeMain, api as apiMain } from 'GlobalStore'
 import {getLogger} from "Logging";
 import {useRouter} from "vue-router";
 
 const router = useRouter()
 
-const registry = storeMain.r[Constants.defaultInstanceId]
+const registry = storeMain.r["default"]
 const options = registry.sfcOptions
 
 // ________________________________________________________________________________

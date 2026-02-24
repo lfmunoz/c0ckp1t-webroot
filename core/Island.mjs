@@ -8,7 +8,6 @@
 import {markRaw, reactive, watch, defineAsyncComponent, getCurrentInstance} from 'vue'
 import {ok, nok, sha1} from "JsUtils"
 import {getLogger} from 'Logging';
-import Constants from "Constants";
 import Connection from "./ws-client/Connection.mjs";
 
 import {indexOfNonString} from "JsUtils";
@@ -306,7 +305,7 @@ export default class Island {
 
         if (endpoint.startsWith('/c0ckp1t/')) {
             const endpointAdjusted = endpoint.replace("/c0ckp1t/", `/`)
-            const path = `${Constants.SERVER_API_URL}${endpointAdjusted}`;
+            const path = `${this.config.SERVER_API_URL}${endpointAdjusted}`;
             this.logger.debug(`[resolver] - endpointAdjusted=${path}`);
             const res = await Http.getText(path)
             if (res.isOk) {
@@ -328,7 +327,7 @@ export default class Island {
     getText = async (endpoint) => {
         this.logger.info(`[getText] -  endpoint=${endpoint}`)
         if (endpoint.startsWith('/c0ckp1t/')) {
-            const path = `${Constants.SERVER_API_URL}${endpoint}`;
+            const path = `${this.config.SERVER_API_URL}${endpoint}`;
             return await Http.getText(path)
         }
         const args = ["read", endpoint]
@@ -341,19 +340,19 @@ export default class Island {
     }
 
     async getBinary(endpoint) {
-        const path = `${Constants.SERVER_API_URL}${endpoint}`;
+        const path = `${this.config.SERVER_API_URL}${endpoint}`;
         this.logger.debug(`[getBinary] - ${path}`);
         return await Http.getBinary(path)
     }
 
     async getJson(endpoint) {
-        const path = `${Constants.SERVER_API_URL}${endpoint}`;
+        const path = `${this.config.SERVER_API_URL}${endpoint}`;
         this.logger.debug(`[getJson] - ${path}`);
         return await Http.getJson(path)
     }
 
     async postJson(endpoint, body) {
-        const path = `${Constants.SERVER_API_URL}${endpoint}`;
+        const path = `${this.config.SERVER_API_URL}${endpoint}`;
         this.logger.debug(`[postJson] - ${path}`);
         return await Http.postJson(path, body)
     }

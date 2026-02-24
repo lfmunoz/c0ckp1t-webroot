@@ -48,8 +48,6 @@ const {hostname, port, protocol, isSecure, apiBaseUrl} = findHostNamePortProtoco
 // ________________________________________________________________________________
 // GLOBAL CONSTANTS
 // ________________________________________________________________________________
-const defaultInstanceId =  "default";
-
 let Constants = {
 
     SERVER_API_URL: `${protocol}//${hostname}:${port}`,
@@ -92,7 +90,6 @@ let Constants = {
     apiBaseUrl: apiBaseUrl,
 
     islands: { },
-    defaultInstanceId: defaultInstanceId,
     defaultConfig: {
         instanceId: "default",
         root: {
@@ -106,7 +103,7 @@ let Constants = {
             children: [
                 {
                     depth: 1,
-                    endpoint: `/${defaultInstanceId}/demo`,
+                    endpoint: `/default/demo`,
                     isLeaf: true,
                     isRoot: false,
                     path: ["demo"],

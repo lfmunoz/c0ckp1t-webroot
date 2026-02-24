@@ -14,12 +14,11 @@
 import { reactive, computed, watch, onMounted, onBeforeUnmount } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
-import {store as storeMain, api as apiMain, store} from 'GlobalStore'
+import {store as storeMain, api as apiMain} from 'GlobalStore'
 import { getLogger } from "Logging";
 
 import { DocUtils, extractBasePathFromURL } from '../DocUtils.mjs'
 import MdToc from "../sfc/md-toc.vue";
-import Constants from "Constants";
 import {substrAfterFirstSlash} from "JsUtils";
 
 const route = useRoute()
@@ -71,7 +70,7 @@ const local = reactive({
   markdownText: "",
   snapshot: "",
   showScrollToTop: false,
-  isDev: Constants.isDev,
+  isDev: storeMain.config.isDev,
 });
 
 

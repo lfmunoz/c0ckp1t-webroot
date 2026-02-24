@@ -1,7 +1,6 @@
 // ________________________________________________________________________________
 // Logging.mjs
 // ________________________________________________________________________________
-import Constants from '../Constants.mjs'
 
 // Note: localStorage is global in browser environment object
 // Note: window.log is provided by loglevel library (imported globally in index.html)
@@ -12,18 +11,25 @@ const prefixer = prefix.noConflict();
 prefixer.reg(log);
 prefixer.apply(log, { format: loggerPrefixFn });
 
-const localStorageKey = "loggers"
 
-const loggers = { ...Constants.defaultLoggerLevels }
+// ________________________________________________________________________________
+// STORE
+// ________________________________________________________________________________
+export const store = {
+  defaultLogLevel: "INFO",
+  localStorageKey: "loggers",
+  loggers: { }
+}
+
 
 // https://www.npmjs.com/package/loglevel
 export function getLogger(location) {
   const logger = log.getLogger(location)
-  if(loggers.hasOwnProperty(location)) {
-    logger.setLevel(loggers[location])
+  if(store.loggers.hasOwnProperty(location)) {
+    logger.setLevel(store.loggers[location])
   } else {
-    logger.setLevel(Constants.defaultLogLevel)
-    loggers[location] = Constants.defaultLogLevel
+    logger.setLevel(store.defaultLogLevel)
+    store.loggers[location] = store.defaultLogLevel
   }
   return logger
 }
@@ -31,29 +37,32 @@ export function getLogger(location) {
 export function setLogger(location, level) {
   const logger = log.getLogger(location)
   logger.setLevel(level)
-  loggers[location] = level
+  store.loggers[location] = level
 
 
-  localStorage.setItem(localStorageKey, JSON.stringify(loggers));
+  localStorage.setItem(store.localStorageKey, JSON.stringify(store.loggers));
 }
 
 export function listLoggers() {
-  return loggers
+  return store.loggers
 }
 
 export function clearLocalStorage() {
-  localStorage.removeItem(localStorageKey)
+  localStorage.removeItem(store.localStorageKey)
 }
 
-function init() {
-  const json = localStorage.getItem(localStorageKey)
+export function init(config) {
+  // const json = localStorage.getItem(localStorageKey)
   // Object.assign(loggers, JSON.parse(json));
+
+  log.trace(`[INIT] - trace - enabled`)
+  log.debug(`[INIT] - debug - enabled`)
+  log.info (`[INIT] - info - enabled`)
+  log.warn( `[INIT] - warn - enabled`)
+  log.error(`[INIT] - error - enabled`)
+  store.loggers = { ...config.defaultLoggerLevels }
+  store.defaultLogLevel = config.defaultLogLevel
+
 }
 
-log.info (`[INIT]`)
-init()
-// log.trace(`[INIT] - trace - enabled`)
-// log.debug(`[INIT] - debug - enabled`)
-// log.error(`[INIT] - error - enabled`)
-// log.warn( `[INIT] - warn - enabled`)
 

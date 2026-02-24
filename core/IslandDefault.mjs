@@ -5,7 +5,6 @@ import {markRaw, reactive, watch, defineAsyncComponent, getCurrentInstance} from
 import {ok, nok, sha1} from "JsUtils"
 import {Http} from "WsUtils"
 import {getLogger} from 'Logging';
-import Constants from "Constants";
 import {loadModule, options } from "./VueUtils.mjs";
 
 // ________________________________________________________________________________
@@ -183,25 +182,25 @@ export default class IslandDefault {
 
 
     getText = async (endpoint) => {
-            const path = `${Constants.SERVER_API_URL}${endpoint}`;
+            const path = `${this.config.SERVER_API_URL}${endpoint}`;
             this.logger.debug(`[getText] - ${path}`);
             return await Http.getText(path)
     }
 
     async getBinary(endpoint) {
-        const path = `${Constants.SERVER_API_URL}${endpoint}`;
+        const path = `${this.config.SERVER_API_URL}${endpoint}`;
         this.logger.debug(`[getBinary] - ${path}`);
         return await Http.getBinary(path)
     }
 
     async getJson(endpoint, params = {}) {
-        const path = `${Constants.SERVER_API_URL}${endpoint}`;
+        const path = `${this.config.SERVER_API_URL}${endpoint}`;
         this.logger.debug(`[getJson] - ${path}`);
         return await Http.getJson(path)
     }
 
     async postJson(endpoint, body) {
-        const path = `${Constants.SERVER_API_URL}${endpoint}`;
+        const path = `${this.config.SERVER_API_URL}${endpoint}`;
         this.logger.debug(`[postJson] - ${path}`);
         return await Http.postJson(path, body)
     }

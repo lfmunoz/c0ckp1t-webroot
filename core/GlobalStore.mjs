@@ -254,6 +254,8 @@ export const api = {
         };
 
 
+
+        config.defaultConfig.SERVER_API_URL = config.SERVER_API_URL
         const islandDefault = new IslandDefault(api, config.defaultConfig)
         store.r[islandDefault.instanceId] = islandDefault
         await islandDefault.init()
@@ -312,6 +314,7 @@ export const api = {
 
         for (const [key, value] of Object.entries(config.islands || {})) {
             const config = {
+                SERVER_API_URL: config.SERVER_API_URL,
                 sfcOptions: islandDefault.sfcOptions,
                 ...value
             }

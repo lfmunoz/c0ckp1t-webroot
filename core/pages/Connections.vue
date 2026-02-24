@@ -9,7 +9,6 @@
 import {reactive, onMounted, defineAsyncComponent, computed} from 'vue'
 import {store as storeMain, api as apiMain} from 'GlobalStore'
 import {getLogger} from "Logging";
-import Constants from "Constants";
 import {useRoute} from "vue-router";
 import {api as notify} from "NotifyUtils"
 import ExecButton from "../../components/ExecButton.vue";
@@ -33,7 +32,8 @@ const local = reactive({
 });
 
 function createConnection() {
-  const config  = JSON.parse(JSON.stringify(Constants.configDefault))
+  // TODO: create correct config
+  const config  = {}
   config.instanceId = local.connectionName
   try {
     apiMain.createRegistry(config)

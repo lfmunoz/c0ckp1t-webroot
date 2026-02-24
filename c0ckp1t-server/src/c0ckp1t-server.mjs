@@ -73,6 +73,7 @@ server.app.get('*', (req, res) => {
         return res.status(404).send('Not found')
     }
     // No file extension - treat as a Vue Router client-side route
+    // res.sendFile(path.join(webrootPath, 'index-cdn.html'))
     res.sendFile(path.join(webrootPath, 'index.html'))
 })
 

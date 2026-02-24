@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>C0ckp1t</title>
+  <link rel="icon" href="https://cdn.jsdelivr.net/npm/c0ckp1t@1.0.0/favicon-32x32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="https://cdn.jsdelivr.net/npm/c0ckp1t@1.0.0/favicon-64x64.png" sizes="64x64" type="image/png">
+  <link rel="icon" href="https://cdn.jsdelivr.net/npm/c0ckp1t@1.0.0/favicon-192x192.png" sizes="192x192" type="image/png">
+
+  <link href="https://cdn.jsdelivr.net/npm/c0ckp1t@1.0.0/css/bootstrap.min.css"  type="text/css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/c0ckp1t@1.0.0/css/fontawesome/solid.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/c0ckp1t@1.0.0/css/fontawesome/fontawesome.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/c0ckp1t@1.0.0/js_ext/highlight/stackoverflow-dark.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/c0ckp1t@1.0.0/js_ext/markdown/katex.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/c0ckp1t@1.0.0/style.css"  type="text/css" rel="stylesheet">
+
+  <script type="importmap">
+    {
+        "imports": {
+            "Constants": "/Constants.mjs",
+            "Logging": "https://cdn.jsdelivr.net/npm/c0ckp1t@1.0.0/core/Logging.mjs",
+            "JsUtils": "https://cdn.jsdelivr.net/npm/c0ckp1t@1.0.0/core/JsUtils.mjs",
+            "GlobalStore": "https://cdn.jsdelivr.net/npm/c0ckp1t@1.0.0/core/GlobalStore.mjs",
+            "NotifyUtils": "https://cdn.jsdelivr.net/npm/c0ckp1t@1.0.0/core/notify/NotifyUtils.mjs",
+            "WsUtils": "https://cdn.jsdelivr.net/npm/c0ckp1t@1.0.0/core/WsUtils.mjs",
+            "IslandDefault": "https://cdn.jsdelivr.net/npm/c0ckp1t@1.0.0/core/IslandDefault.mjs",
+
+            "vue3-sfc-loader": "https://cdn.jsdelivr.net/npm/c0ckp1t@1.0.0/js_ext/vue3-sfc-loader.esm.js",
+            "vue": "https://cdn.jsdelivr.net/npm/c0ckp1t@1.0.0/js_ext/vue.esm-browser.prod.min.js",
+            "vue-router": "https://cdn.jsdelivr.net/npm/c0ckp1t@1.0.0/js_ext/vue-router.esm-browser.prod.js",
+            "idb-keyval": "https://cdn.jsdelivr.net/npm/c0ckp1t@1.0.0/js_ext/idb-keyval-6.2.2.mjs"
+        }
+    }
+  </script>
+
+</head>
+
+<body class="main-body">
+  <div id="app-default">
+    <app-main></app-main>
+  </div>
+</body>
+
+<script type="module">
+import Constants from 'Constants'
+import {api as apiMain} from 'GlobalStore'
+apiMain.init("app-default", Constants)
+</script>
+
+<!-- =================== SCRIPTS ===================  -->
+<script src="https://cdn.jsdelivr.net/npm/c0ckp1t@1.0.0/js_ext/loglevel.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/c0ckp1t@1.0.0/js_ext/loglevel-plugin-prefix.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/c0ckp1t@1.0.0/js_ext/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/c0ckp1t@1.0.0/js_ext/highlight/highlight.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/c0ckp1t@1.0.0/js_ext/markdown/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/c0ckp1t@1.0.0/js_ext/markdown/markdown-it.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/c0ckp1t@1.0.0/js_ext/markdown/markdownItAnchor.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/c0ckp1t@1.0.0/js_ext/rxjs.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/c0ckp1t@1.0.0/js_ext/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/c0ckp1t@1.0.0/js_ext/ace-editor/ace.js" type="text/javascript" charset="utf-8"></script>
+</html>

@@ -6,10 +6,9 @@
 // IMPORTS
 //________________________________________________________________________________
 import {ref, markRaw, reactive, watch, onMounted, computed} from 'vue'
-import {store as storeMain, api as methods} from 'GlobalStore'
+import {store as storeMain, api as apiMain} from 'GlobalStore'
 import {getLogger} from "Logging";
 import ClientStorage2 from  "core/ClientStorage2.mjs"
-import Constants from 'Constants'
 const storage = new ClientStorage2("auth", "default")
 
 // ________________________________________________________________________________
@@ -40,13 +39,13 @@ async function init() {
     return
   }
   const authEntity = await storage.build("authEntity", {
-    hostname: Constants.HOSTNAME,
-    port: parseInt(Constants.PORT) + 1,
-    protocol: Constants.PROTOCOL,
+    hostname: storeMain.config.HOSTNAME,
+    port: parseInt(storeMain.config.PORT) + 1,
+    protocol: storeMain.config.PROTOCOL,
     endpoint: "socket",
-    username: Constants.defaultUsername,
-    password: Constants.defaultPassword,
-    isSecure: Constants.IS_SECURE,
+    username: storeMain.config.defaultUsername,
+    password: storeMain.config.defaultPassword,
+    isSecure: storeMain.config.IS_SECURE,
   }, "OBJECT")
   storage.storageCreate(authEntity)
 

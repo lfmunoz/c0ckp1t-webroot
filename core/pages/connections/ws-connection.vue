@@ -3,7 +3,6 @@ import { ref, reactive, watch, onMounted, computed } from 'vue'
 
 import { actions, state, connStateString, url, isAuthenticated, tryCallLoading} from "WsInterface";
 
-import Constants from 'Constants'
 import {getLogger} from "Logging";
 import {store as storeSession} from "Session";
 
@@ -24,7 +23,7 @@ const backoffMsMax = 20000;
 
 const local = reactive({
   isLoading: false,
-  isDev: Constants.isDev,
+  isDev: false,
 
   retries: 0,
   retryEnable: true,

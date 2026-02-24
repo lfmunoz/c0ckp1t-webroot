@@ -14,15 +14,11 @@
   choose between 'sfc' mode (uses vue3-sfc-loader) or 'compiled' mode
   (uses native ES module imports).
 */
-import Constants from 'Constants'
 import * as Vue from 'vue'
 import * as VueRouter from 'vue-router'
 import {loadModule, vueVersion} from 'vue3-sfc-loader'
 
-if(Constants.isDev) {
-    console.log(`vue3-sfc-loader vue version ${vueVersion}`)
-    console.log(`vue.js version ${Vue.version}`)
-}
+
 
 import * as Logging from "Logging";
 import * as GlobalStore from 'GlobalStore'
@@ -41,7 +37,8 @@ const katexTags = ['mn', 'mfrac', 'mrow', 'annotation', 'semantics', 'math',
 const LOG_HEADER = `VueUtils.mjs`
 const logger = Logging.getLogger(LOG_HEADER)
 logger.debug("init")
-
+logger.info(`vue3-sfc-loader vue version ${vueVersion}`)
+logger.info(`vue.js version ${Vue.version}`)
 
 
 //________________________________________________________________________________
@@ -68,7 +65,6 @@ const options =  {
         WsUtils: WsUtils,
         Logging: Logging,
         NotifyUtils: NotifyUtils,
-        Constants: Constants,
         GlobalStore: GlobalStore,
     },
 
@@ -90,7 +86,7 @@ const options =  {
             res = await GlobalStore.store.r[instanceId].resolver(pathAfterInstanceId, type)
         } else {
             logger.debug(`[getFile] - default - ${path} - ${type}`)
-            res = await GlobalStore.store.r[Constants.defaultInstanceId].resolver(path, type)
+            res = await GlobalStore.store.r["default"].resolver(path, type)
         }
 
         return {
